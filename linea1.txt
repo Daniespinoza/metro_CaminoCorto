@@ -1,27 +1,28 @@
-SP;San Pablo
-NP;Neptuno
-PJ;Pajaritos
-LR;Las Rejas
-EC;Ecuador
-AH;San Alberto Hurtado
-US;Universidad de Santiago
-EL;Estación Central
-LA;ULA
-RP;República
-LH;Los Héroes
-LM;La Moneda
-CH;Universidad de Chile
-SL;Santa Lucía
-UC;Universidad Católica
-BA;Baquedano
-SA;Salvador
-MM;Manuel Montt
-PV;Pedro de Valdivia
-LE;Los Leones
-TB;Tobalaba
-GO;El Golf
-AL;Alcántara
-EM;Escuela Militar
-MQ;Manquehue
-HM;Hernando de Magallanes
-LD;Los Dominicos
+
+SP;San Pablo'1
+NP;Neptuno'0
+PJ;Pajaritos'0
+LR;Las Rejas'0
+EC;Ecuador'0
+AH;San Alberto Hurtado'0
+US;Universidad de Santiago'0
+EL;Estación Central'0
+LA;ULA'0
+RP;República'0
+LH;Los Héroes'2
+LM;La Moneda'0
+CH;Universidad de Chile'0
+SL;Santa Lucía'0
+UC;Universidad Católica'0
+BA;Baquedano'5
+SA;Salvador'0
+MM;Manuel Montt'0
+PV;Pedro de Valdivia'0
+LE;Los Leones'0
+TB;Tobalaba'4
+GO;El Golf'0
+AL;Alcántara'0
+EM;Escuela Militar'0
+MQ;Manquehue'0
+HM;Hernando de Magallanes'0
+LD;Los Dominicos'0

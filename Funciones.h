@@ -30,6 +30,7 @@ using namespace std;
 struct estaciones {
         std::string nombre;
         std::string codigo;
+        std::string  combinacion;
         struct estaciones *link;
         };
         typedef estaciones *Lista;
@@ -46,7 +47,7 @@ void generar_lista(std::string, Lista &);
      * @param nombre, codigo , lista
      * @return agrega nodo a lista
      */
-void agregar_Nodo(std::string,std::string,Lista &);
+void agregar_Nodo(std::string,std::string,std::string,Lista &);
 /**
      * 
      * @param lista

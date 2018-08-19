@@ -7,12 +7,13 @@
 
 #include "Funciones.h"
 
-void agregar_Nodo(std::string a,std::string b,Lista &linea)
+void agregar_Nodo(std::string a,std::string b,std::string c,Lista &linea)
 {
     Lista estac ;
     estac = new estaciones;
     estac->codigo = a;
     estac->nombre = b;
+    estac->combinacion = c;
     estac->link=linea;
     linea = estac;
    /* std::cout  << "\n agregando nombre: "<<b;
@@ -23,6 +24,7 @@ void generar_lista(std::string linea,Lista &lineas)
     std::string estacion;
     std::string partOne;
     std::string partTwo;
+    std::string partThree;
    
     ifstream archivo;
     //const char* delims = ";";
@@ -33,11 +35,13 @@ void generar_lista(std::string linea,Lista &lineas)
         }
     while(getline(archivo,estacion)){
             
-        size_t f = estacion.find(";"); 
+        size_t f = estacion.find(";");
+        size_t fin = estacion.find("'");
         partOne = estacion.substr(0,f);
-        partTwo = estacion.substr(f+1,estacion.size());
-        agregar_Nodo(partOne,partTwo,lineas);
-        //std::cout << partOne << ";;;;"<< partTwo<< endl;
+        partTwo = estacion.substr(f+1,fin);
+        partThree = estacion.substr(fin+1,estacion.size());
+        agregar_Nodo(partOne,partTwo,partThree,lineas);
+        //std::cout << partOne << ";;;;"<< partTwo<< ";;;;"<<partThree<<endl;
         }
         
         archivo.close();
@@ -54,7 +58,8 @@ void ver_lista(Lista l)
             {
               
                 std::cout << "nombre: "<< p->nombre;
-                std::cout <<"\n codigo: "<< p->codigo<<"\n";
+                std::cout <<"\n codigo: "<< p->codigo;
+                std::cout <<"\n Combinacion linea: "<< p->combinacion<<"\n";
                 p=p->link;
             }
         }

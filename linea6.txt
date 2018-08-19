@@ -1,10 +1,11 @@
-CER;Cerrillos
-LVA;Lo Valledor
-PAC;Pedro Aguirre Cerda
-FRA;Franklin
-BIO;Bío Bío
-NUB;Ñuble
-ESN;Estadio Nacional
-NUO;Ñuñoa
-ISU;Inés de Suárez
-LEN;Los Leones
+
+CER;Cerrillos'0
+LVA;Lo Valledor'0
+PAC;Pedro Aguirre Cerda'0
+FRA;Franklin'2
+BIO;Bío Bío'0
+NUB;Ñuble'5
+ESN;Estadio Nacional'0
+NUO;Ñuñoa'0
+ISU;Inés de Suárez'0
+LEN;Los Leones'1

@@ -1,22 +1,23 @@
-LC;La Cisterna
-EP;El Parrón
-LO;Lo Ovalle
-CN;Ciudad del Niño
-DE;Departamental
-LV;Lo Vial
-SM;San Miguel
-LL;El Llano
-FR;Franklin
-RO;Rondizzoni
-PQ;Parque O'Higgins
-TO;Toesca
-HE;Los Héroes
-AN;Santa Ana
-CA;Puente Cal y Canto
-PT;Patronato
-CB;Cerro Blanco
-CE;Cementerios
-EI;Einstein
-DO;Dorsal
-ZA;Zapadores
-AV;Vespucio Norte
+
+LC;La Cisterna'4a
+EP;El Parrón'0
+LO;Lo Ovalle'0
+CN;Ciudad del Niño'0
+DE;Departamental'0
+LV;Lo Vial'0
+SM;San Miguel'0
+LL;El Llano'0
+FR;Franklin'6
+RO;Rondizzoni'0
+PQ;Parque O'Higgins'0
+TO;Toesca'0
+HE;Los Héroes'1
+AN;Santa Ana'5
+CA;Puente Cal y Canto'0
+PT;Patronato'0
+CB;Cerro Blanco'0
+CE;Cementerios;'0
+EI;Einstein;'0
+DO;Dorsal;'0
+ZA;Zapadores'0
+AV;Vespucio Norte'0

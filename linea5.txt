@@ -1,30 +1,31 @@
-PM;Plaza de Maipú
-SB;Santiago Bueras
-DS;Del Sol
-MT;Monte Tabor
-LP;Las Parcelas
-LS;Laguna Sur
-BR;Barrancas
-PU;Pudahuel
-SO;San Pablo
-PR;Lo Prado
-BL;Blanqueado
-GL;Gruta de Lourdes
-QN;Quinta Normal
-RC;Cumming
-NA;Santa Ana
-PZ;Plaza de Armas
-BE;Bellas Artes
-BQ;Baquedano
-PB;Parque Bustamante
-SI;Santa Isabel
-IR;Irarrázaval
-NU;Ñuble
-RA;Rodrigo de Araya
-CV;Carlos Valdovinos
-AG;Camino Agrícola
-SJ;San Joaquín
-PE;Pedrero
-MA;Mirador
-LF;Bellavista de La Florida
-VV;Vicente Valdés
+
+PM;Plaza de Maipú'0
+SB;Santiago Bueras'0
+DS;Del Sol'0
+MT;Monte Tabor'0
+LP;Las Parcelas'0
+LS;Laguna Sur'0
+BR;Barrancas'0
+PU;Pudahuel'0
+SO;San Pablo'1
+PR;Lo Prado'0
+BL;Blanqueado'0
+GL;Gruta de Lourdes'0
+QN;Quinta Normal'0
+RC;Cumming'0
+NA;Santa Ana'2
+PZ;Plaza de Armas'0
+BE;Bellas Artes'0
+BQ;Baquedano'1
+PB;Parque Bustamante'0
+SI;Santa Isabel'0
+IR;Irarrázaval'0
+NU;Ñuble'6
+RA;Rodrigo de Araya'0
+CV;Carlos Valdovinos'0
+AG;Camino Agrícola'0
+SJ;San Joaquín'0
+PE;Pedrero'0
+MA;Mirador'0
+LF;Bellavista de La Florida'0
+VV;Vicente Valdés'4

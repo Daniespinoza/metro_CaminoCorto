@@ -65,3 +65,41 @@ void ver_lista(Lista l)
         }
 
 }
+/**
+ * Identifica si el codigo pertenece a la estacino ingresada
+ * @param l Linea a arevisar
+ * @param cod Codigo de la estacion que buscamos
+ * @return regresa un 1 si la estacion pertenece a la linea
+ */
+int busca_estacion(Lista l, string cod)
+{
+    int res=0;
+    Lista p;
+    p=l;
+    if(p==NULL)
+        cout<<"no existen estaciones";
+    else
+        {
+            while(p->link!=NULL)
+            {
+                if(cod==p->codigo)
+                {
+                    res=1;
+                }
+                p=p->link;
+            }
+        }
+    return res;
+}
+/**
+ * Regresa la lista que continen  la estacion de origen
+ * @param cod Codigo de la estacion de origen
+ * @param a
+ * @param b
+ * @param c
+ * @param d
+ * @param e
+ * @param f
+ * @return Retorna la lista donde esta el inicio del recorrido
+ */
+

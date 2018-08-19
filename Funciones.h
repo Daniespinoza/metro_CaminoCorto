@@ -55,4 +55,8 @@ void agregar_Nodo(std::string,std::string,std::string,Lista &);
      */
 void ver_lista(Lista l);
 
+int busca_estacion(Lista , string);
+
+
+
 #endif /* FUNCIONES_H */

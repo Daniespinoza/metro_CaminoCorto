@@ -35,12 +35,43 @@ int main(int argc, char** argv) {
         if(i==5)
             generar_lista(lineas[i],Linea6);
     }
+    
+    /*
     ver_lista(Linea1);
     ver_lista(Linea2);
     ver_lista(Linea4);
     ver_lista(Linea4a);
     ver_lista(Linea5);
     ver_lista(Linea6);
+    */
+    string cod="CER";//provando que solo muestre la line que posea codigo CER
+    Lista aux;
+    if(busca_estacion(Linea1,cod)==1)
+    {
+        aux=Linea1;
+    }
+    if(busca_estacion(Linea2,cod)==1)
+    {
+        aux=Linea2;
+    }
+    if(busca_estacion(Linea4,cod)==1)
+    {
+        aux=Linea4;
+    }
+    if(busca_estacion(Linea4a,cod)==1)
+    {
+        aux=Linea4a;
+    }
+    if(busca_estacion(Linea5,cod)==1)
+    {
+        aux=Linea5;
+    }
+    if(busca_estacion(Linea6,cod)==1)
+    {
+        aux=Linea6;
+    }
+
+    ver_lista(aux);
     
     return 0;
 }

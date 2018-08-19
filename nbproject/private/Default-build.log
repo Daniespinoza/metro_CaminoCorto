@@ -1,0 +1,2 @@
+rm -fr *.o a.out programa
+make: *** No hay ninguna regla para construir el objetivo 'Persona.cpp', necesario para 'Persona.o'.  Alto.

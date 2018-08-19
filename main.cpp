@@ -11,7 +11,7 @@
  * 
  */
 int main(int argc, char** argv) {
-
+    
     Lista Linea1 = NULL;
     Lista Linea2 = NULL;
     Lista Linea4 = NULL;
@@ -26,16 +26,18 @@ int main(int argc, char** argv) {
     generar_lista("5",Linea5);
     generar_lista("6",Linea6);
     
-    /*MUESTRA LAS ESTACIONES DE CADA LINEA
+    //MUESTRA LAS ESTACIONES DE CADA LINEA
+    
     ver_lista(Linea1);
     ver_lista(Linea2);
     ver_lista(Linea4);
     ver_lista(Linea4a);
     ver_lista(Linea5);
     ver_lista(Linea6);
-    */
     
-    /*PROBANDO QUE SOLO MUESTRE LA LINEA QUE POSEA EL CÓDIGO CER
+    
+    //PROBANDO QUE SOLO MUESTRE LA LINEA QUE POSEA EL CÓDIGO CER
+    /*
     string cod="CER";
     Lista aux;
     if(busca_estacion(Linea1,cod)==1)
@@ -66,15 +68,33 @@ int main(int argc, char** argv) {
     ver_lista(aux);
     */
     
+    if (argc < 2){
+        cout << endl;
+        cout << "Forma de uso:" << endl;
+        cout << "Ver integrantes: ./programa -v" << endl;
+        cout << "Encontrar ruta más corta: ./programa -f [CODIGO_ESTACION_ORIGEN] [CODIGO_ESTACION_DESTINO]" << endl;
+        cout << endl;
+        exit(1);
+    }
+    
     char* parametro = argv[1];
     
     if(strcmp(parametro,"-v") == 0){
-        cout << "Aplicación desarrollada por:" << endl;
-        cout << "- Nicolás Cortés." << endl;
-        cout << "- Rodrigo Echeverría." << endl;
-        cout << "- Daniel Espinoza." << endl;
+        imprimir_autores();
     }
-            
+    else{
+        if(strcmp(parametro,"-f") == 0){
+            char* estacion_origen = argv[2];
+            char* estacion_destino = argv[3];
+            /*¿funcion_magica_que_resuelve_todo(estacion_origen,estacion_destino)?*/
+        }
+        else{
+            cout << endl;
+            cout << "Argumentos incorrectos." << endl;
+            cout << endl;
+        }
+    }
+    
     return 0;
 }
 

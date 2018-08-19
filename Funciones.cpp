@@ -19,6 +19,7 @@ void agregar_Nodo(std::string a,std::string b,std::string c,Lista &linea)
    /* std::cout  << "\n agregando nombre: "<<b;
     std::cout  << "\n agregando codigo: "<< a << "\n";*/
 }
+
 void generar_lista(std::string linea,Lista &lineas)
 {
     std::string estacion;
@@ -46,6 +47,7 @@ void generar_lista(std::string linea,Lista &lineas)
         
         archivo.close();
 }
+
 void ver_lista(Lista l)
 {
     Lista p;
@@ -63,14 +65,8 @@ void ver_lista(Lista l)
                 p=p->link;
             }
         }
-
 }
-/**
- * Identifica si el codigo pertenece a la estacino ingresada
- * @param l Linea a arevisar
- * @param cod Codigo de la estacion que buscamos
- * @return regresa un 1 si la estacion pertenece a la linea
- */
+
 int busca_estacion(Lista l, string cod)
 {
     int res=0;
@@ -91,6 +87,16 @@ int busca_estacion(Lista l, string cod)
         }
     return res;
 }
+
+void imprimir_autores(){
+    cout << endl;
+    cout << "Aplicación desarrollada por:" << endl;
+    cout << "- Nicolás Cortés." << endl;
+    cout << "- Rodrigo Echeverría." << endl;
+    cout << "- Daniel Espinoza." << endl;
+    cout << endl;
+}
+
 /**
  * Regresa la lista que continen  la estacion de origen
  * @param cod Codigo de la estacion de origen

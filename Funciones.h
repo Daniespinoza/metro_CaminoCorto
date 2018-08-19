@@ -13,11 +13,45 @@
 
 #include <string>
 #include <regex>
-
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <stdlib.h>
+#include <stdio.h>
 using namespace std;
 
 
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
+/**
+     * 
+     * @param Estructura de estaciones
+     */
+struct estaciones {
+        std::string nombre;
+        std::string codigo;
+        struct estaciones *link;
+        };
+        typedef estaciones *Lista;
+
+
+/**
+     * 
+     * @param linea{PARAMETER}.txt, Lista
+     * @return genera lista con archivos txt
+     */
+void generar_lista(std::string, Lista &);
+/**
+     * 
+     * @param nombre, codigo , lista
+     * @return agrega nodo a lista
+     */
+void agregar_Nodo(std::string,std::string,Lista &);
+/**
+     * 
+     * @param lista
+     * @return visualizar lista
+     */
+void ver_lista(Lista l);
 
 #endif /* FUNCIONES_H */

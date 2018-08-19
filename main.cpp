@@ -18,25 +18,15 @@ int main(int argc, char** argv) {
     Lista Linea4a = NULL;
     Lista Linea5 = NULL;
     Lista Linea6 = NULL;
-    std::string lineas[6] = {"1","2","4","4a","5","6"};
-    for(int i=0; i < 6; i++)
-    {
-        std::string lista = "Linea"+lineas[i];
-        if(i == 0)
-            generar_lista(lineas[i],Linea1);    
-        if(i==1)
-            generar_lista(lineas[i],Linea2);    
-        if(i==2)
-            generar_lista(lineas[i],Linea4);
-        if(i==3)
-            generar_lista(lineas[i],Linea4a);
-        if(i==4)
-            generar_lista(lineas[i],Linea5);
-        if(i==5)
-            generar_lista(lineas[i],Linea6);
-    }
     
-    /*
+    generar_lista("1",Linea1);
+    generar_lista("2",Linea2);
+    generar_lista("4",Linea4);
+    generar_lista("4a",Linea4a);
+    generar_lista("5",Linea5);
+    generar_lista("6",Linea6);
+    
+    /*MUESTRA LAS ESTACIONES DE CADA LINEA
     ver_lista(Linea1);
     ver_lista(Linea2);
     ver_lista(Linea4);
@@ -44,7 +34,9 @@ int main(int argc, char** argv) {
     ver_lista(Linea5);
     ver_lista(Linea6);
     */
-    string cod="CER";//provando que solo muestre la line que posea codigo CER
+    
+    /*PROBANDO QUE SOLO MUESTRE LA LINEA QUE POSEA EL CÓDIGO CER
+    string cod="CER";
     Lista aux;
     if(busca_estacion(Linea1,cod)==1)
     {
@@ -72,7 +64,17 @@ int main(int argc, char** argv) {
     }
 
     ver_lista(aux);
+    */
     
+    char* parametro = argv[1];
+    
+    if(strcmp(parametro,"-v") == 0){
+        cout << "Aplicación desarrollada por:" << endl;
+        cout << "- Nicolás Cortés." << endl;
+        cout << "- Rodrigo Echeverría." << endl;
+        cout << "- Daniel Espinoza." << endl;
+    }
+            
     return 0;
 }
 

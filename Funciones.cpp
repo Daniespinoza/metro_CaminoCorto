@@ -173,6 +173,7 @@ int buscar_codigo(estaciones a[], std::string name)
 }
 void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
 {
+        int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=0;
 	int fin = 0;
 	int pos;
 	estaciones recorrido[200];
@@ -181,10 +182,14 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
 	std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
 	std::string pos_encontrada;
 	std::string cod_siguiente;
+        std::string cod_anterior;
 	cod_siguiente = a[posicion_ini][posicion_ini +1].siguiente;
+        cod_anterior = a[posicion_ini][posicion_ini +1].anterior;
 	recorrido[0].codigo=nodo_inicial;	
 	while(fin !=1)
 	{
+            if(dir==1)
+            {
 		pos = buscar_posicion(b,cod_siguiente);
 		pos_encontrada = a[pos][pos+1].codigo;
 		if(pos_encontrada == nodo_final)
@@ -194,6 +199,7 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
 		if(a[pos][pos+1].siguiente == "TERMINAL")
 		{
 			i=1;
+                        dir=0;
 			cod_siguiente = a[posicion_ini][posicion_ini+1].codigo;
 		}
 		else
@@ -202,6 +208,28 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
 			cod_siguiente = a[pos][pos+1].siguiente;
 		}
 		i=i+1;
+            }
+            else
+            {
+                pos = buscar_posicion(b,cod_anterior);
+		pos_encontrada = a[pos][pos+1].codigo;
+		if(pos_encontrada == nodo_final)
+		{
+			fin=1;
+		}
+		if(a[pos][pos+1].anterior == "INICIO")
+		{
+			i=1;
+                        dir=1;
+			cod_anterior = a[posicion_ini][posicion_ini+1].codigo;
+		}
+		else
+		{
+			recorrido[i].codigo = pos_encontrada;
+			cod_anterior = a[pos][pos+1].anterior;
+		}
+		i=i+1;
+            }
 	}
 	for(int j=0; j<i;j++)
 	{

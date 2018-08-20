@@ -158,7 +158,19 @@ int buscar_posicion(estaciones a[], std::string cod)
 
 	}
 }
-
+int buscar_codigo(estaciones a[], std::string name)
+{
+	        int pos;
+		        std::string nombre;
+			        for(pos=0; pos<118; pos++)
+				 {
+				      nombre = a[pos].nombre;
+			          if(nombre.compare(name)==0)
+			          {
+			         	  return pos;												
+				  }
+											        }
+}
 void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
 {
 	int fin = 0;
@@ -179,8 +191,16 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
 		{
 			fin=1;
 		}
-		recorrido[i].codigo = pos_encontrada;
-		cod_siguiente = a[pos][pos+1].siguiente;
+		if(a[pos][pos+1].siguiente == "TERMINAL")
+		{
+			i=1;
+			cod_siguiente = a[posicion_ini][posicion_ini+1].codigo;
+		}
+		else
+		{
+			recorrido[i].codigo = pos_encontrada;
+			cod_siguiente = a[pos][pos+1].siguiente;
+		}
 		i=i+1;
 	}
 	for(int j=0; j<i;j++)

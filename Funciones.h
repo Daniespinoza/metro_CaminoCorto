@@ -85,6 +85,14 @@ struct estaciones {
  *      *                          */
 
 	int buscar_posicion(estaciones [], std::string);
+/**     
+ *  *  *      * Estructura de datos con la información de una estación.
+ *   *   *           * @param nombre Nombre de la estación.
+ *    *    *                * @param codigo Código de la estación.
+ *     *     *                     * @param combinacion Línea con la que combina.
+ *      *      *                          */
+
+	int buscar_codigo(estaciones [], std::string);
 
 
 /**     

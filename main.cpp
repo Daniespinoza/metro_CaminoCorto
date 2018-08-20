@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
   //  std::cout << "la matriz es: \n";
   // mostrar_matriz(lineas);
 	std::string inicio = "SP";
-	std::string fin = "LR";
+	std::string fin = "LC";
 	int posicion_ini = buscar_posicion(estacion,inicio);
 	int posicion_fin = buscar_posicion(estacion,fin);
 	cout <<"INICIO: " << lineas[posicion_ini][posicion_ini +1].codigo <<" FIN: "<< lineas[posicion_fin][posicion_fin +1].codigo << endl;	

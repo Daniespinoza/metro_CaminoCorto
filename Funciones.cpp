@@ -96,7 +96,7 @@ void generar_matriz(estaciones linea[][119])
                     linea[i][j].anterior = linea[i-1][j-1].codigo;
                 }
             }
-	    std::cout<< "guardando....." <<linea[i][j].codigo << " " << linea[i][j].nombre << " " << linea[i][j].siguiente << " "<< linea[i][j].anterior<<"\n";
+//	    std::cout<< "guardando....." <<linea[i][j].codigo << " " << linea[i][j].nombre << " " << linea[i][j].siguiente << " "<< linea[i][j].anterior<<"\n";
             i++;
 	    j=i+1;
         }
@@ -143,3 +143,51 @@ void mostrar_matriz(estaciones linea[][119])
         
     }
 }
+
+int buscar_posicion(estaciones a[], std::string cod)
+{
+	int pos;
+	std::string codigo;
+	for(pos=0; pos<118; pos++)
+	{
+		codigo = a[pos].codigo;
+		if(codigo.compare(cod)==0)
+		{
+			return pos;
+		}
+
+	}
+}
+
+void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
+{
+	int fin = 0;
+	int pos;
+	estaciones recorrido[200];
+	int i=1;
+	std::string nodo_inicial = a[posicion_ini][posicion_ini+1].codigo;
+	std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
+	std::string pos_encontrada;
+	std::string cod_siguiente;
+	cod_siguiente = a[posicion_ini][posicion_ini +1].siguiente;
+	recorrido[0].codigo=nodo_inicial;	
+	while(fin !=1)
+	{
+		pos = buscar_posicion(b,cod_siguiente);
+		pos_encontrada = a[pos][pos+1].codigo;
+		if(pos_encontrada == nodo_final)
+		{
+			fin=1;
+		}
+		recorrido[i].codigo = pos_encontrada;
+		cod_siguiente = a[pos][pos+1].siguiente;
+		i=i+1;
+	}
+	for(int j=0; j<i;j++)
+	{
+		std::cout << recorrido[j].codigo << "-";
+	}
+
+
+}
+

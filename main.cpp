@@ -13,11 +13,20 @@
 int main(int argc, char** argv) {
    
     estaciones lineas[119][119];
-
+    estaciones estacion[118];
+    generar_arreglo(estacion);
     generar_matriz(lineas);
+	
+  //  std::cout << "la matriz es: \n";
+  // mostrar_matriz(lineas);
+	std::string inicio = "SP";
+	std::string fin = "LR";
+	int posicion_ini = buscar_posicion(estacion,inicio);
+	int posicion_fin = buscar_posicion(estacion,fin);
+	cout <<"INICIO: " << lineas[posicion_ini][posicion_ini +1].codigo <<" FIN: "<< lineas[posicion_fin][posicion_fin +1].codigo << endl;	
+	
+	buscar_camino(lineas, estacion,posicion_ini ,posicion_fin );
 
-    std::cout << "la matriz es: \n";
-   mostrar_matriz(lineas);
 
 
 	 if (argc < 2){

@@ -77,4 +77,22 @@ struct estaciones {
  *                          */
 	void imprimir_autores();
 
+/**
+ *  *      * Estructura de datos con la información de una estación.
+ *   *           * @param nombre Nombre de la estación.
+ *    *                * @param codigo Código de la estación.
+ *     *                     * @param combinacion Línea con la que combina.
+ *      *                          */
+
+	int buscar_posicion(estaciones [], std::string);
+
+
+/**     
+ *  *  *      * Estructura de datos con la información de una estación.
+ *   *   *           * @param nombre Nombre de la estación.
+ *    *    *                * @param codigo Código de la estación.
+ *     *     *                     * @param combinacion Línea con la que combina.
+ *      *      *                          */
+
+	void buscar_camino(estaciones [][119], estaciones [], int , int );
 #endif /* FUNCIONES_H */

@@ -7,86 +7,6 @@
 
 #include "Funciones.h"
 
-void agregar_Nodo(std::string a,std::string b,std::string c,Lista &linea)
-{
-    Lista estac ;
-    estac = new estaciones;
-    estac->codigo = a;
-    estac->nombre = b;
-    estac->combinacion = c;
-    estac->link=linea;
-    linea = estac;
-   /* std::cout  << "\n agregando nombre: "<<b;
-    std::cout  << "\n agregando codigo: "<< a << "\n";*/
-}
-
-void generar_lista(std::string linea,Lista &lineas)
-{
-    std::string estacion;
-    std::string partOne;
-    std::string partTwo;
-    std::string partThree;
-   
-    ifstream archivo;
-    //const char* delims = ";";
-    archivo.open("linea"+linea+".txt");
-    if (!archivo) {
-            cerr << "No se pudo abrir el archivo linea"+linea+".txt";
-            exit(1);   // detenerse y salir
-        }
-    while(getline(archivo,estacion)){
-            
-        size_t f = estacion.find(";");
-        size_t fin = estacion.find("'");
-        partOne = estacion.substr(0,f);
-        partTwo = estacion.substr(f+1,fin);
-        partThree = estacion.substr(fin+1,estacion.size());
-        agregar_Nodo(partOne,partTwo,partThree,lineas);
-        //std::cout << partOne << ";;;;"<< partTwo<< ";;;;"<<partThree<<endl;
-        }
-        
-        archivo.close();
-}
-
-void ver_lista(Lista l)
-{
-    Lista p;
-    p=l;
-    if(p==NULL)
-        cout<<"no existen estaciones";
-    else
-        {
-            while(p->link!=NULL)
-            {
-              
-                std::cout << "nombre: "<< p->nombre;
-                std::cout <<"\n codigo: "<< p->codigo;
-                std::cout <<"\n Combinacion linea: "<< p->combinacion<<"\n";
-                p=p->link;
-            }
-        }
-}
-
-int busca_estacion(Lista l, string cod)
-{
-    int res=0;
-    Lista p;
-    p=l;
-    if(p==NULL)
-        cout<<"no existen estaciones";
-    else
-        {
-            while(p->link!=NULL)
-            {
-                if(cod==p->codigo)
-                {
-                    res=1;
-                }
-                p=p->link;
-            }
-        }
-    return res;
-}
 
 void imprimir_autores(){
     cout << endl;
@@ -97,15 +17,129 @@ void imprimir_autores(){
     cout << endl;
 }
 
-/**
- * Regresa la lista que continen  la estacion de origen
- * @param cod Codigo de la estacion de origen
- * @param a
- * @param b
- * @param c
- * @param d
- * @param e
- * @param f
- * @return Retorna la lista donde esta el inicio del recorrido
- */
 
+
+void generar_arreglo(estaciones linea[])
+{
+    std::string estacion;
+    std::string cod;
+    
+    ifstream archivo;
+    //const char* delims = ";";
+    archivo.open("linea.txt");
+    if (!archivo) {                                                                                                                                                                                                     
+            cerr << "No se pudo abrir el archivo linea.txt";
+            exit(1);   // detenerse y salir
+        }
+    int i=0;
+    while(getline(archivo,estacion)){
+        size_t puntoYcoma = estacion.find(";");
+        cod = estacion.substr(0,puntoYcoma);
+
+        linea[i].codigo = cod; 
+        i++;
+    }
+}
+void generar_matriz(estaciones linea[][119])
+{
+    std::string estacion;
+    std::string cod;
+    std::string name;
+    std::string termi;
+    std::string combi;
+    std::string str1="1";
+    std::string str2="2";
+    int x;
+    estaciones estacione[118];
+    generar_arreglo(estacione);
+
+    ifstream archivo;
+    //const char* delims = ";";
+    archivo.open("linea.txt");
+    if (!archivo) {                                                                                                                                                                                                     
+            cerr << "No se pudo abrir el archivo linea.txt";
+            exit(1);   // detenerse y salir
+        }
+    int i=0,j=1;
+    while(getline(archivo,estacion)){
+	if(j==119)
+		j=0;
+        size_t puntoYcoma = estacion.find(";");
+        size_t comilla = estacion.find("'");
+        size_t arroba = estacion.find("@");
+	name = estacion.substr(puntoYcoma+1,comilla-puntoYcoma-1);
+        cod = estacion.substr(0,puntoYcoma);
+        combi = estacion.substr(comilla+1,arroba-comilla-1);
+        termi = estacion.substr(arroba+1,estacion.size()-1);
+	x = std::atoi(termi.c_str());
+        if(j==i+1)
+        {
+            linea[i][j].codigo = cod;
+            linea[i][j].nombre = name;
+	    linea[i][j].combinacion = combi;
+
+            if(x==1 )
+            {
+                linea[i][j].siguiente = "TERMINAL";
+                linea[i][j].anterior = linea[i-1][j-1].codigo;
+            }
+            else
+            {
+                if(x == 2 )
+                {
+                    linea[i][j].siguiente = estacione[i+1].codigo;
+                    linea[i][j].anterior = "INICIO";
+                }
+                else
+                {
+                    linea[i][j].siguiente = estacione[i+1].codigo;
+                    linea[i][j].anterior = linea[i-1][j-1].codigo;
+                }
+            }
+	    std::cout<< "guardando....." <<linea[i][j].codigo << " " << linea[i][j].nombre << " " << linea[i][j].siguiente << " "<< linea[i][j].anterior<<"\n";
+            i++;
+	    j=i+1;
+        }
+        else
+        {
+		if(j==118 && i==118)		
+		{
+
+		}
+
+            j++;
+        }
+     
+        
+    }
+    
+}
+
+void mostrar_arreglo(estaciones linea[])
+{
+    int i;
+    for(i=0;i<118;i++)
+    {
+        std::cout<< linea[i].codigo<<"\n";
+    }
+}
+
+
+void mostrar_matriz(estaciones linea[][119])
+{
+    int i;
+    for(i=0;i<119;i++)
+    {
+        for(int j=0; j<119;j++)
+        {
+		if(j==i+1){
+                std::cout<< linea[i][j].nombre<<"";
+                std::cout<<"   " <<linea[i][j].anterior<<"";
+                std::cout<<"  " <<linea[i][j].codigo<<"";
+                std::cout<< "  "<< linea[i][j].siguiente<<"";
+		std::cout<<"  " <<linea[i][j].combinacion<<"\n";
+		}
+        }
+        
+    }
+}

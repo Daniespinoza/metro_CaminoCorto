@@ -1,0 +1,118 @@
+SP;San Pablo'S0@2
+NP;Neptuno'0@0
+PJ;Pajaritos'0@0
+LR;Las Rejas'0@0
+EC;Ecuador'0@0
+AH;San Alberto Hurtado'0@0
+US;Universidad de Santiago'0@0
+EL;Estación Central'0@0
+LA;ULA'0@0
+RP;República'0@0
+LH;Los Héroes'HE@0
+LM;La Moneda'0@0
+CH;Universidad de Chile'0@0
+SL;Santa Lucía'0@0
+UC;Universidad Católica'0@0
+BA;Baquedano'BQ@0
+SA;Salvador'0@0
+MM;Manuel Montt'0@0
+PV;Pedro de Valdivia'0@0
+LE;Los Leones'LEN@0
+TB;Tobalaba'TOB@0
+GO;El Golf'0@0
+AL;Alcántara'0@0
+EM;Escuela Militar'0@0
+MQ;Manquehue'0@0
+HM;Hernando de Magallanes'0@0
+LD;Los Dominicos'0@1
+LC;La Cisterna'LCI@2
+EP;El Parrón'0@0
+LO;Lo Ovalle'0@0
+CN;Ciudad del Niño'0@0
+DE;Departamental'0@0
+LV;Lo Vial'0@0
+SM;San Miguel'0@0
+LL;El Llano'0@0
+FR;Franklin'FRA@0
+RO;Rondizzoni'0@0
+PQ;Parque OHiggins'0@0
+TO;Toesca'0@0
+HE;Los Héroes'LH@0
+AN;Santa Ana'NA@0
+CA;Puente Cal y Canto'0@0
+PT;Patronato'0@0
+CB;Cerro Blanco'0@0
+CE;Cementerios;'0@0
+EI;Einstein;'0@0
+DO;Dorsal;'0@0
+ZA;Zapadores'0@0
+AV;Vespucio Norte'0@1
+VIM;Vicuña Mackenna'VMA@2
+SJU;Santa Julia'0@0
+LGR;La Granja'0@0
+SRO;Santa Rosa'0@0
+SRA;San Ramón'0@0
+LCI;La Cisterna'LC@1
+TOB;Tobalaba'TB@2
+COL;Cristóbal Colón'0@0
+BIL;Francisco Bilbao'0@0
+PDG;Principe de Gales'0@0
+SBO;Simón Bolivar'0@0
+PEG;Plaza Egaña'0@0
+LOR;Los Orientales'0@0
+RGR;Grecia'0@0
+LPR;Los Presidentes'0@0
+RQU;Quilín'0@0
+LTO;Las Torres'0@0
+MAC;Macul'0@0
+VMA;Vicuña Mackenna'VIM@0
+VVA;Vicente Valdés'VV@0
+RMA;Rojas Magallanes'0@0
+TRI;Trinidad'0@0
+SJE;San José de la Estrella'0@0
+LQU;Los Quillayes'0@0
+ECO;Elisa Correa'0@0
+HSR;Hospital Sótero del Rio'0@0
+PIN;Protectora de la Infancia'0@0
+LME;Las Mercedes'0@0
+PPA;Plaza de Puente Alto'0@1
+PM;Plaza de Maipú'0@2
+SB;Santiago Bueras'0@0
+DS;Del Sol'0@0
+MT;Monte Tabor'0@0
+LP;Las Parcelas'0@0
+LS;Laguna Sur'0@0
+BR;Barrancas'0@0
+PU;Pudahuel'0@0
+SO;San Pablo'SP@0
+PR;Lo Prado'0@0
+BL;Blanqueado'0@0
+GL;Gruta de Lourdes'0@0
+QN;Quinta Normal'0@0
+RC;Cumming'0@0
+NA;Santa Ana'AN@0
+PZ;Plaza de Armas'0@0
+BE;Bellas Artes'0@0
+BQ;Baquedano'BA@0
+PB;Parque Bustamante'0@0
+SI;Santa Isabel'0@0
+IR;Irarrázaval'0@0
+NU;Ñuble'NUB@0
+RA;Rodrigo de Araya'0@0
+CV;Carlos Valdovinos'0@0
+AG;Camino Agrícola'0@0
+SJ;San Joaquín'0@0
+PE;Pedrero'0@0
+MA;Mirador'0q@0
+LF;Bellavista de La Florida'0@0
+VV;Vicente Valdés'VVA@1
+CER;Cerrillos'0@2
+LVA;Lo Valledor'0@0
+PAC;Pedro Aguirre Cerda'0@0
+FRA;Franklin'FR@0
+BIO;Bío Bío'0@0
+NUB;Ñuble'NU@0
+ESN;Estadio Nacional'0@0
+NUO;Ñuñoa'0@0
+ISU;Inés de Suárez'0@0
+LEN;Los Leones'LE@1

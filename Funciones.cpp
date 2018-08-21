@@ -157,23 +157,26 @@ int buscar_posicion(estaciones a[], std::string cod)
 		}
 
 	}
+	return -1;
 }
 int buscar_codigo(estaciones a[], std::string name)
 {
 	        int pos;
-		        std::string nombre;
-			        for(pos=0; pos<118; pos++)
-				 {
-				      nombre = a[pos].nombre;
-			          if(nombre.compare(name)==0)
-			          {
-			         	  return pos;												
-				  }
-											        }
+	        std::string nombre;
+	        for(pos=0; pos<118; pos++)
+		 {
+		      nombre = a[pos].nombre;
+	             if(nombre.compare(name)==0)
+	             {
+	        	  return pos;												
+		      } 
+                 }
+		return -1;
 }
 void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
 {
-        int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=0;
+//        int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=1;
+	int dir=1;
 	int fin = 0;
 	int pos;
 	estaciones recorrido[200];
@@ -200,7 +203,7 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
 		{
 			i=1;
                         dir=0;
-			cod_siguiente = a[posicion_ini][posicion_ini+1].codigo;
+			cod_anterior = a[posicion_ini][posicion_ini+1].anterior;
 		}
 		else
 		{
@@ -211,22 +214,25 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
             }
             else
             {
+		std::cout << "comienza busqueda hacia atras"<<" cod: "<<cod_anterior <<endl;
                 pos = buscar_posicion(b,cod_anterior);
 		pos_encontrada = a[pos][pos+1].codigo;
+	//	break;
 		if(pos_encontrada == nodo_final)
 		{
 			fin=1;
 		}
-		if(a[pos][pos+1].anterior == "INICIO")
+		if(a[pos][pos-1].anterior == "INICIO")
 		{
 			i=1;
                         dir=1;
-			cod_anterior = a[posicion_ini][posicion_ini+1].codigo;
+			cod_siguiente = a[posicion_ini][posicion_ini+1].siguiente;
 		}
 		else
 		{
+			std::cout <<"pos: " <<pos <<" pos_encontrada" << pos_encontrada << " cod_anterior" << cod_anterior<<endl;
 			recorrido[i].codigo = pos_encontrada;
-			cod_anterior = a[pos][pos+1].anterior;
+			cod_anterior = a[pos-1][pos].anterior;
 		}
 		i=i+1;
             }

@@ -1,7 +1,0 @@
-
-VIM;Vicuña Mackenna'4
-SJU;Santa Julia'0
-LGR;La Granja'0
-SRO;Santa Rosa'0
-SRA;San Ramón'0
-LCI;La Cisterna'2

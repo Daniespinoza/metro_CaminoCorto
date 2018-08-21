@@ -7,86 +7,6 @@
 
 #include "Funciones.h"
 
-void agregar_Nodo(std::string a,std::string b,std::string c,Lista &linea)
-{
-    Lista estac ;
-    estac = new estaciones;
-    estac->codigo = a;
-    estac->nombre = b;
-    estac->combinacion = c;
-    estac->link=linea;
-    linea = estac;
-   /* std::cout  << "\n agregando nombre: "<<b;
-    std::cout  << "\n agregando codigo: "<< a << "\n";*/
-}
-
-void generar_lista(std::string linea,Lista &lineas)
-{
-    std::string estacion;
-    std::string partOne;
-    std::string partTwo;
-    std::string partThree;
-   
-    ifstream archivo;
-    //const char* delims = ";";
-    archivo.open("linea"+linea+".txt");
-    if (!archivo) {
-            cerr << "No se pudo abrir el archivo linea"+linea+".txt";
-            exit(1);   // detenerse y salir
-        }
-    while(getline(archivo,estacion)){
-            
-        size_t f = estacion.find(";");
-        size_t fin = estacion.find("'");
-        partOne = estacion.substr(0,f);
-        partTwo = estacion.substr(f+1,fin);
-        partThree = estacion.substr(fin+1,estacion.size());
-        agregar_Nodo(partOne,partTwo,partThree,lineas);
-        //std::cout << partOne << ";;;;"<< partTwo<< ";;;;"<<partThree<<endl;
-        }
-        
-        archivo.close();
-}
-
-void ver_lista(Lista l)
-{
-    Lista p;
-    p=l;
-    if(p==NULL)
-        cout<<"no existen estaciones";
-    else
-        {
-            while(p->link!=NULL)
-            {
-              
-                std::cout << "nombre: "<< p->nombre;
-                std::cout <<"\n codigo: "<< p->codigo;
-                std::cout <<"\n Combinacion linea: "<< p->combinacion<<"\n";
-                p=p->link;
-            }
-        }
-}
-
-int busca_estacion(Lista l, string cod)
-{
-    int res=0;
-    Lista p;
-    p=l;
-    if(p==NULL)
-        cout<<"no existen estaciones";
-    else
-        {
-            while(p->link!=NULL)
-            {
-                if(cod==p->codigo)
-                {
-                    res=1;
-                }
-                p=p->link;
-            }
-        }
-    return res;
-}
 
 void imprimir_autores(){
     cout << endl;
@@ -97,15 +17,225 @@ void imprimir_autores(){
     cout << endl;
 }
 
-/**
- * Regresa la lista que continen  la estacion de origen
- * @param cod Codigo de la estacion de origen
- * @param a
- * @param b
- * @param c
- * @param d
- * @param e
- * @param f
- * @return Retorna la lista donde esta el inicio del recorrido
- */
+
+
+void generar_arreglo(estaciones linea[])
+{
+    std::string estacion;
+    std::string cod;
+    
+    ifstream archivo;
+    //const char* delims = ";";
+    archivo.open("linea.txt");
+    if (!archivo) {                                                                                                                                                                                                     
+            cerr << "No se pudo abrir el archivo linea.txt";
+            exit(1);   // detenerse y salir
+        }
+    int i=0;
+    while(getline(archivo,estacion)){
+        size_t puntoYcoma = estacion.find(";");
+        cod = estacion.substr(0,puntoYcoma);
+
+        linea[i].codigo = cod; 
+        i++;
+    }
+}
+void generar_matriz(estaciones linea[][119])
+{
+    std::string estacion;
+    std::string cod;
+    std::string name;
+    std::string termi;
+    std::string combi;
+    std::string str1="1";
+    std::string str2="2";
+    int x;
+    estaciones estacione[118];
+    generar_arreglo(estacione);
+
+    ifstream archivo;
+    //const char* delims = ";";
+    archivo.open("linea.txt");
+    if (!archivo) {                                                                                                                                                                                                     
+            cerr << "No se pudo abrir el archivo linea.txt";
+            exit(1);   // detenerse y salir
+        }
+    int i=0,j=1;
+    while(getline(archivo,estacion)){
+	if(j==119)
+		j=0;
+        size_t puntoYcoma = estacion.find(";");
+        size_t comilla = estacion.find("'");
+        size_t arroba = estacion.find("@");
+	name = estacion.substr(puntoYcoma+1,comilla-puntoYcoma-1);
+        cod = estacion.substr(0,puntoYcoma);
+        combi = estacion.substr(comilla+1,arroba-comilla-1);
+        termi = estacion.substr(arroba+1,estacion.size()-1);
+	x = std::atoi(termi.c_str());
+        if(j==i+1)
+        {
+            linea[i][j].codigo = cod;
+            linea[i][j].nombre = name;
+	    linea[i][j].combinacion = combi;
+
+            if(x==1 )
+            {
+                linea[i][j].siguiente = "TERMINAL";
+                linea[i][j].anterior = linea[i-1][j-1].codigo;
+            }
+            else
+            {
+                if(x == 2 )
+                {
+                    linea[i][j].siguiente = estacione[i+1].codigo;
+                    linea[i][j].anterior = "INICIO";
+                }
+                else
+                {
+                    linea[i][j].siguiente = estacione[i+1].codigo;
+                    linea[i][j].anterior = linea[i-1][j-1].codigo;
+                }
+            }
+//	    std::cout<< "guardando....." <<linea[i][j].codigo << " " << linea[i][j].nombre << " " << linea[i][j].siguiente << " "<< linea[i][j].anterior<<"\n";
+            i++;
+	    j=i+1;
+        }
+        else
+        {
+		if(j==118 && i==118)		
+		{
+
+		}
+
+            j++;
+        }
+     
+        
+    }
+    
+}
+
+void mostrar_arreglo(estaciones linea[])
+{
+    int i;
+    for(i=0;i<118;i++)
+    {
+        std::cout<< linea[i].codigo<<"\n";
+    }
+}
+
+
+void mostrar_matriz(estaciones linea[][119])
+{
+    int i;
+    for(i=0;i<119;i++)
+    {
+        for(int j=0; j<119;j++)
+        {
+		if(j==i+1){
+                std::cout<< linea[i][j].nombre<<"";
+                std::cout<<"   " <<linea[i][j].anterior<<"";
+                std::cout<<"  " <<linea[i][j].codigo<<"";
+                std::cout<< "  "<< linea[i][j].siguiente<<"";
+		std::cout<<"  " <<linea[i][j].combinacion<<"\n";
+		}
+        }
+        
+    }
+}
+
+int buscar_posicion(estaciones a[], std::string cod)
+{
+	int pos;
+	std::string codigo;
+	for(pos=0; pos<118; pos++)
+	{
+		codigo = a[pos].codigo;
+		if(codigo.compare(cod)==0)
+		{
+			return pos;
+		}
+
+	}
+}
+int buscar_codigo(estaciones a[], std::string name)
+{
+	        int pos;
+		        std::string nombre;
+			        for(pos=0; pos<118; pos++)
+				 {
+				      nombre = a[pos].nombre;
+			          if(nombre.compare(name)==0)
+			          {
+			         	  return pos;												
+				  }
+											        }
+}
+void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
+{
+        int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=0;
+	int fin = 0;
+	int pos;
+	estaciones recorrido[200];
+	int i=1;
+	std::string nodo_inicial = a[posicion_ini][posicion_ini+1].codigo;
+	std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
+	std::string pos_encontrada;
+	std::string cod_siguiente;
+        std::string cod_anterior;
+	cod_siguiente = a[posicion_ini][posicion_ini +1].siguiente;
+        cod_anterior = a[posicion_ini][posicion_ini +1].anterior;
+	recorrido[0].codigo=nodo_inicial;	
+	while(fin !=1)
+	{
+            if(dir==1)
+            {
+		pos = buscar_posicion(b,cod_siguiente);
+		pos_encontrada = a[pos][pos+1].codigo;
+		if(pos_encontrada == nodo_final)
+		{
+			fin=1;
+		}
+		if(a[pos][pos+1].siguiente == "TERMINAL")
+		{
+			i=1;
+                        dir=0;
+			cod_siguiente = a[posicion_ini][posicion_ini+1].codigo;
+		}
+		else
+		{
+			recorrido[i].codigo = pos_encontrada;
+			cod_siguiente = a[pos][pos+1].siguiente;
+		}
+		i=i+1;
+            }
+            else
+            {
+                pos = buscar_posicion(b,cod_anterior);
+		pos_encontrada = a[pos][pos+1].codigo;
+		if(pos_encontrada == nodo_final)
+		{
+			fin=1;
+		}
+		if(a[pos][pos+1].anterior == "INICIO")
+		{
+			i=1;
+                        dir=1;
+			cod_anterior = a[posicion_ini][posicion_ini+1].codigo;
+		}
+		else
+		{
+			recorrido[i].codigo = pos_encontrada;
+			cod_anterior = a[pos][pos+1].anterior;
+		}
+		i=i+1;
+            }
+	}
+	for(int j=0; j<i;j++)
+	{
+		std::cout << recorrido[j].codigo << "-";
+	}
+
+
+}
 

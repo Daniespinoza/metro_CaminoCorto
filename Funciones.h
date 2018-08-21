@@ -28,55 +28,79 @@ using namespace std;
      * @param nombre Nombre de la estación.
      * @param codigo Código de la estación.
      * @param combinacion Línea con la que combina.
+     * @param anterior Enlace con la estación anterior.  
      * @param link Enlace con la siguiente estación.
      */
 struct estaciones {
         std::string nombre;
         std::string codigo;
-        std::string  combinacion;
-        struct estaciones *link;
+        std::string  linea;
+	std::string combinacion;
+        std::string siguiente;
+        std::string anterior;
         };
-        typedef estaciones *Lista;
-
-
 /**
-     * Lee el archivo .txt de la línea de metro y crea una lista enlazada, donde cada nodo corresponde a una estación.
-     * @param linea String con el número de la línea.
-     * @param Linea Objeto vacío de tipo Lista.
-     * @return Esta función no retorna.
-     */
-void generar_lista(std::string, Lista &);
-
-/**
-     * Agrega la información de la estación a una estructura de datos y esta es agregada como un nodo a la lista.
+     * Estructura de datos con la información de una estación.
      * @param nombre Nombre de la estación.
      * @param codigo Código de la estación.
-     * @param combinación La línea a la que se puede combinar desde esta estación.
-     * @param lista La lista a la que se agregará el nodo.
-     * @return Esta función no retorna.
+     * @param combinacion Línea con la que combina.
      */
-void agregar_Nodo(std::string,std::string,std::string,Lista &);
+        void generar_matriz(estaciones [][119]);
+        
+/**
+     * Estructura de datos con la información de una estación.
+     * @param nombre Nombre de la estación.
+     * @param codigo Código de la estación.
+     * @param combinacion Línea con la que combina.
+     */        
+        void generar_arreglo(estaciones []);
+/**
+     * Estructura de datos con la información de una estación.
+     * @param nombre Nombre de la estación.
+     * @param codigo Código de la estación.
+     * @param combinacion Línea con la que combina.
+     */                
+        void mostrar_arreglo(estaciones []);
+        
+/**
+     * Estructura de datos con la información de una estación.
+     * @param nombre Nombre de la estación.
+     * @param codigo Código de la estación.
+     * @param combinacion Línea con la que combina.
+     */                        
+        void mostrar_matriz(estaciones [][119]);
+/**
+ *      * Estructura de datos con la información de una estación.
+ *           * @param nombre Nombre de la estación.
+ *                * @param codigo Código de la estación.
+ *                     * @param combinacion Línea con la que combina.
+ *                          */
+	void imprimir_autores();
 
 /**
-     * Imprime por pantalla la información de cada estación de la línea.
-     * @param lista Lista de la línea de metro que contiene las estaciones.
-     * @return Esta función no retorna.
-     */
-void ver_lista(Lista l);
+ *  *      * Estructura de datos con la información de una estación.
+ *   *           * @param nombre Nombre de la estación.
+ *    *                * @param codigo Código de la estación.
+ *     *                     * @param combinacion Línea con la que combina.
+ *      *                          */
 
-/**
-     * Identifica si el codigo pertenece a la estación ingresada.
-     * @param l Linea a revisar.
-     * @param cod Código de la estacion a buscar.
-     * @return Retorna 1 si la estación pertenece a la línea.
- */
-int busca_estacion(Lista , string);
+	int buscar_posicion(estaciones [], std::string);
+/**     
+ *  *  *      * Estructura de datos con la información de una estación.
+ *   *   *           * @param nombre Nombre de la estación.
+ *    *    *                * @param codigo Código de la estación.
+ *     *     *                     * @param combinacion Línea con la que combina.
+ *      *      *                          */
 
-/**
-     * Imprime los nombres de los autores de la aplicación.
-     * @param Esta función no tiene parámetros.
-     * @return Esta función no retorna.
-     */
-void imprimir_autores();
+	int buscar_codigo(estaciones [], std::string);
 
+
+/**     
+ *  *  *      * Estructura de datos con la información de una estación.
+ *   *   *           * @param nombre Nombre de la estación.
+ *    *    *                * @param codigo Código de la estación.
+ *     *     *                     * @param combinacion Línea con la que combina.
+ *      *      *                          */
+
+	void buscar_camino(estaciones [][119], estaciones [], int , int );
 #endif /* FUNCIONES_H */

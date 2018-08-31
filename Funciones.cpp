@@ -117,11 +117,19 @@ void generar_matriz(estaciones linea[][119])
 
 void mostrar_arreglo(estaciones linea[])
 {
-    int i;
-    for(i=0;i<118;i++)
+    int i=0;
+    while(linea[i].nombre!=""){
+        std::cout<< linea[i].nombre;
+        if(linea[i+1].nombre!=""){
+            cout << " - ";
+        }
+        i++;
+    }
+    cout << endl;
+    /*for(i=0;i<118;i++)
     {
         std::cout<< linea[i].codigo<<"\n";
-    }
+    }*/
 }
 
 
@@ -157,85 +165,233 @@ int buscar_posicion(estaciones a[], std::string cod)
 		}
 
 	}
+	return -1;
 }
 int buscar_codigo(estaciones a[], std::string name)
 {
 	        int pos;
-		        std::string nombre;
-			        for(pos=0; pos<118; pos++)
-				 {
-				      nombre = a[pos].nombre;
-			          if(nombre.compare(name)==0)
-			          {
-			         	  return pos;												
-				  }
-											        }
+	        std::string nombre;
+	        for(pos=0; pos<118; pos++)
+		 {
+		      nombre = a[pos].nombre;
+	             if(nombre.compare(name)==0)
+	             {
+	        	  return pos;												
+		      } 
+                 }
+		return -1;
 }
+/**
+ * 
+ * @param a Matriz de adyasencias de las estaciones
+ * @param b Arreglo para buscar posicion de codigos en matriz
+ * @param optimo Guarda el camino optimo encontrado
+ * @param ruta Guarda la ruta actualmente en revision
+ * @param ubicacion Posicionen la que actualmente se encuantra el programa
+ * @param posicion_fin Pocision de la estacion final
+ * @param largo Valor entero con cantidad de estaciones en la ruta
+ * @param minimo El valor mas bajo de una ruta completa 
+ */
+void Ruta_R(estaciones a[][119],estaciones optimo[],estaciones ruta[],estaciones arreglo[],int ubicacion, int posicion_fin,int largo, int minimo, int combinaciones)
+{
+    std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
+    std::string nombre_nodo_final = a[posicion_fin][posicion_fin+1].nombre;
+    int pos_com;
+    std::string cod_siguiente;
+    cod_siguiente = a[ubicacion][ubicacion +1].siguiente;
+    while(cod_siguiente!="TERMINAL" or a[ubicacion][ubicacion+1].codigo==nodo_final)
+    {
+        //añade a la ruta el numero de pocicon de la estacion
+        ruta[largo]=a[ubicacion][ubicacion+1];
+        if(a[ubicacion][ubicacion+1].nombre==nombre_nodo_final)
+        {
+            if(largo<minimo)
+            {
+              optimo=ruta;
+              std::cout << "Se ha encontrado una ruta en Ruta_R: ";
+              mostrar_arreglo(ruta);
+            }
+        }
+        /*if(a[ubicacion][ubicacion+1].combinacion!="0")
+        {
+            combinaciones++;
+            if(combinaciones<=4)
+            {
+                pos_com=buscar_codigo(arreglo,a[ubicacion][ubicacion+1].combinacion);
+                Ruta_C(estaciones a[][119],estaciones optimo[],estaciones ruta[],int pos_com, int posicion_fin,int largo, int minimo, int combinaciones);
+            }
+        }*/
+        cod_siguiente = a[ubicacion][ubicacion +1].siguiente;
+        ubicacion++;
+        largo++;
+
+    }
+}
+void Ruta_L(estaciones a[][119],estaciones optimo[],estaciones ruta[],estaciones arreglo[],int ubicacion, int posicion_fin,int largo, int minimo, int combinaciones)
+{
+    std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
+    std::string nombre_nodo_final = a[posicion_fin][posicion_fin+1].nombre;
+    int pos_com;
+    std::string cod_anterior;
+    cod_anterior = a[ubicacion][ubicacion +1].anterior;
+    while(cod_anterior!="INICIO" or a[ubicacion][ubicacion+1].codigo==nodo_final)
+    {
+        ruta[largo]=a[ubicacion][ubicacion+1];
+        if(a[ubicacion][ubicacion+1].nombre==nombre_nodo_final)
+        {
+            if(largo<minimo)
+            {
+              optimo=ruta;
+              std::cout << "Se ha encontrado una ruta en Ruta_L: ";
+              mostrar_arreglo(ruta);
+            }
+        }
+        if(a[ubicacion][ubicacion+1].combinacion!="0" and ruta[largo].combinacion!=a[ubicacion][ubicacion+1].codigo)
+        {
+            combinaciones++;
+            if(combinaciones<=4)
+            {
+                pos_com=buscar_codigo(arreglo,a[ubicacion][ubicacion+1].combinacion);
+                Ruta_C(estaciones a[][119],estaciones optimo[],estaciones ruta[],int pos_com, int posicion_fin,int largo, int minimo, int combinaciones);
+            }
+        }
+        cod_anterior= a[ubicacion][ubicacion +1].anterior;
+        ubicacion--;
+        largo++;
+    }
+}
+void viaje(estaciones a[][119], int posicion_ini, int posicion_fin)
+{
+    int largo = 0, minimo=99999;
+    std::string nodo_inicial = a[posicion_ini][posicion_ini+1].codigo;
+    std::string nombre_nodo_inicial = a[posicion_ini][posicion_ini+1].nombre;
+    std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
+    std::string nombre_nodo_final = a[posicion_fin][posicion_fin+1].nombre;
+    estaciones estacion[118];
+    // SE LLENA EL ARREGLO CON LOS CÓDIGOS DE LAS ESTACIONES
+    generar_arreglo(estacion);
+    std::string cod_siguiente;
+    std::string cod_anterior;
+    
+    cod_siguiente = a[posicion_ini][posicion_ini +1].siguiente;
+    cod_anterior = a[posicion_ini][posicion_ini +1].anterior;
+    
+    //Se declara un arreglo de estructuras, que contendrá las estaciones que conforman el recorrido
+    estaciones recorrido[200];
+    estaciones optimo[200];
+    int combinaciones=0;
+    //Ruta_R recorre desde la estacion inicial hacia la derecha
+    Ruta_R(a,optimo,recorrido,estacion,posicion_ini,posicion_fin,largo,minimo,combinaciones);
+    Ruta_L(a,optimo,recorrido,estacion,posicion_ini,posicion_fin,largo,minimo,combinaciones);
+    if(a[posicion_ini][posicion_ini +1].combinacion!="0")
+    {
+        combinaciones++;
+        //Ruta_C llama Ruta_R y Ruta_L desde la estacion de combinacion en al sisuiente linea
+        int comb;
+        std::string cod_com;
+        cod_com = a[comb][comb +1].siguiente;
+    }
+    //mostrar_arreglo(optimo);
+}
+void Ruta_C(estaciones a[][119],estaciones optimo[],estaciones ruta[],estaciones arreglo[],int ubicacion, int posicion_fin,int largo, int minimo, int combinaciones)
+{
+    std::string siguiente = a[ubicacion][ubicacion+1].combinacion;
+    int ubicacionc = buscar_codigo(arreglo,siguiente);
+    Ruta_R(a,optimo,ruta,arreglo,ubicacionc,posicion_fin,largo,minimo,combinaciones);
+    Ruta_L(a,optimo,ruta,arreglo,ubicacionc,posicion_fin,largo,minimo,combinaciones);
+    
+}
+
 void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
 {
-        int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=0;
-	int fin = 0;
-	int pos;
-	estaciones recorrido[200];
-	int i=1;
+        //int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=1;
+        //SE GUARDAN LOS CÓDIGOS DE LAS ESTACIONES DE INICIO Y FIN
 	std::string nodo_inicial = a[posicion_ini][posicion_ini+1].codigo;
+        std::string nombre_nodo_inicial = a[posicion_ini][posicion_ini+1].nombre;
 	std::string nodo_final = a[posicion_fin][posicion_fin+1].codigo;
+        
 	std::string pos_encontrada;
+        std::string nombre_pos_encontrada;
 	std::string cod_siguiente;
         std::string cod_anterior;
+        
 	cod_siguiente = a[posicion_ini][posicion_ini +1].siguiente;
         cod_anterior = a[posicion_ini][posicion_ini +1].anterior;
-	recorrido[0].codigo=nodo_inicial;	
+        
+        //Se declara un arreglo de estructuras, que contendrá las estaciones que conforman el recorrido
+	estaciones recorrido[200];
+        
+        //EL RECORRIDO PARTE CON LA ESTACIÓN DE INICIO
+	recorrido[0].codigo=nodo_inicial;
+        recorrido[0].nombre=nombre_nodo_inicial;
+
+        int fin = 0;
+        int dir=1;
+        int pos;
+        int i=1;
+        
 	while(fin !=1)
 	{
             if(dir==1)
             {
+                //SE BUSCA EL NÚMERO DE LA ESTACIÓN SIGUIENTE
 		pos = buscar_posicion(b,cod_siguiente);
+                //SE GUARDA EL CÓDIGO DE LA ESTACIÓN SIGUIENTE
 		pos_encontrada = a[pos][pos+1].codigo;
+                nombre_pos_encontrada = a[pos][pos+1].nombre;
+                
 		if(pos_encontrada == nodo_final)
 		{
 			fin=1;
 		}
+                //SI LA ESTACIÓN SIGUIENTE ES ADEMÁS UN TERMINAL
 		if(a[pos][pos+1].siguiente == "TERMINAL")
 		{
 			i=1;
                         dir=0;
-			cod_siguiente = a[posicion_ini][posicion_ini+1].codigo;
+                        //AHORA EMPIEZA A BUSCAR EN LA OTRA DIRECCIÓN DE LA LÍNEA
+			cod_anterior = a[posicion_ini][posicion_ini+1].anterior;
 		}
 		else
 		{
 			recorrido[i].codigo = pos_encontrada;
+                        recorrido[i].nombre = nombre_pos_encontrada;
 			cod_siguiente = a[pos][pos+1].siguiente;
 		}
 		i=i+1;
             }
             else
             {
+		//std::cout << "comienza busqueda hacia atras"<<" cod: "<<cod_anterior <<endl;
                 pos = buscar_posicion(b,cod_anterior);
 		pos_encontrada = a[pos][pos+1].codigo;
+                //break;
 		if(pos_encontrada == nodo_final)
 		{
 			fin=1;
 		}
-		if(a[pos][pos+1].anterior == "INICIO")
+		if(a[pos][pos-1].anterior == "INICIO")
 		{
 			i=1;
                         dir=1;
-			cod_anterior = a[posicion_ini][posicion_ini+1].codigo;
+			cod_siguiente = a[posicion_ini][posicion_ini+1].siguiente;
 		}
 		else
 		{
+			//std::cout <<"pos: " <<pos <<" pos_encontrada" << pos_encontrada << " cod_anterior" << cod_anterior<<endl;
 			recorrido[i].codigo = pos_encontrada;
-			cod_anterior = a[pos][pos+1].anterior;
+			cod_anterior = a[pos-1][pos].anterior;
 		}
 		i=i+1;
             }
 	}
+        cout << endl;
 	for(int j=0; j<i;j++)
 	{
-		std::cout << recorrido[j].codigo << "-";
+		std::cout << recorrido[j].nombre;
+                if(j+1<i){
+                    cout << " - ";
+                }
 	}
-
-
+        cout << endl;
 }
-

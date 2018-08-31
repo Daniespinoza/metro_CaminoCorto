@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include <stdio.h>
+#include <array>
 using namespace std;
 
 
@@ -29,12 +30,11 @@ using namespace std;
      * @param codigo Código de la estación.
      * @param combinacion Línea con la que combina.
      * @param anterior Enlace con la estación anterior.  
-     * @param link Enlace con la siguiente estación.
      */
 struct estaciones {
         std::string nombre;
         std::string codigo;
-        std::string  linea;
+        std::string linea;
 	std::string combinacion;
         std::string siguiente;
         std::string anterior;
@@ -47,13 +47,11 @@ struct estaciones {
      */
         void generar_matriz(estaciones [][119]);
         
-/**
-     * Estructura de datos con la información de una estación.
-     * @param nombre Nombre de la estación.
-     * @param codigo Código de la estación.
-     * @param combinacion Línea con la que combina.
-     */        
-        void generar_arreglo(estaciones []);
+    /**
+     * Recibe un arreglo de estacion (estructura) e ingresa los códigos de las estaciones que se encuentran en el archivo lineas.txt
+     * @param linea Arreglo de estructuras estacion.
+    */        
+    void generar_arreglo(estaciones []);
 /**
      * Estructura de datos con la información de una estación.
      * @param nombre Nombre de la estación.
@@ -95,12 +93,17 @@ struct estaciones {
 	int buscar_codigo(estaciones [], std::string);
 
 
-/**     
- *  *  *      * Estructura de datos con la información de una estación.
- *   *   *           * @param nombre Nombre de la estación.
- *    *    *                * @param codigo Código de la estación.
- *     *     *                     * @param combinacion Línea con la que combina.
- *      *      *                          */
+/*
+    * Funcion que imprime el camino más corto entre dos estaciones.
+    * @param lineas Matriz con las estaciones.
+    * @param estacion Arreglo con las estaciones.
+    * @param posicion_ini Número de la columna del arreglo de estaciones, donde se encuentra la estación de inicio.
+    * @param posicion_fin Número de la columna del arreglo de estaciones, donde se encuentra la estación de término.
+*/
+void buscar_camino(estaciones [][119], estaciones [], int , int );
+void viaje(estaciones[][119],int,int);
+void Ruta_L(estaciones [][119],estaciones[],estaciones[],estaciones[],int, int,int,int,int);
+void Ruta_R(estaciones [][119],estaciones[],estaciones[],estaciones[],int, int,int,int,int);
+void Ruta_C(estaciones [][119],estaciones[],estaciones[],estaciones[],int, int,int,int,int);
 
-	void buscar_camino(estaciones [][119], estaciones [], int , int );
 #endif /* FUNCIONES_H */

@@ -212,15 +212,15 @@ void Ruta_R(estaciones a[][119],estaciones optimo[],estaciones ruta[],estaciones
               mostrar_arreglo(ruta);
             }
         }
-        /*if(a[ubicacion][ubicacion+1].combinacion!="0")
+        if(a[ubicacion][ubicacion+1].combinacion!="0" and ruta[largo].combinacion!=a[ubicacion][ubicacion+1].codigo)
         {
             combinaciones++;
             if(combinaciones<=4)
             {
                 pos_com=buscar_codigo(arreglo,a[ubicacion][ubicacion+1].combinacion);
-                Ruta_C(estaciones a[][119],estaciones optimo[],estaciones ruta[],int pos_com, int posicion_fin,int largo, int minimo, int combinaciones);
+                Ruta_C(a,optimo,ruta,arreglo,pos_com,posicion_fin,largo,minimo,combinaciones);
             }
-        }*/
+        }
         cod_siguiente = a[ubicacion][ubicacion +1].siguiente;
         ubicacion++;
         largo++;
@@ -252,7 +252,7 @@ void Ruta_L(estaciones a[][119],estaciones optimo[],estaciones ruta[],estaciones
             if(combinaciones<=4)
             {
                 pos_com=buscar_codigo(arreglo,a[ubicacion][ubicacion+1].combinacion);
-                Ruta_C(estaciones a[][119],estaciones optimo[],estaciones ruta[],int pos_com, int posicion_fin,int largo, int minimo, int combinaciones);
+                Ruta_C(a,optimo,ruta,arreglo,pos_com,posicion_fin,largo,minimo,combinaciones);
             }
         }
         cod_anterior= a[ubicacion][ubicacion +1].anterior;
@@ -301,7 +301,7 @@ void Ruta_C(estaciones a[][119],estaciones optimo[],estaciones ruta[],estaciones
     Ruta_L(a,optimo,ruta,arreglo,ubicacionc,posicion_fin,largo,minimo,combinaciones);
     
 }
-
+/*
 void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int posicion_fin)
 {
         //int l1=0,l2=0,l3=0,l4=0,l5=0,l6=0,dir=1;
@@ -391,7 +391,7 @@ void buscar_camino(estaciones a[][119], estaciones b[], int posicion_ini, int po
 		std::cout << recorrido[j].nombre;
                 if(j+1<i){
                     cout << " - ";
-                }
+                } 
 	}
         cout << endl;
-}
+}*/

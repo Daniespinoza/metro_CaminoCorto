@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=metro_madrid_2
+PROJECTNAME=MetroSantiago5
 
 # Active Configuration
 DEFAULTCONF=Debug

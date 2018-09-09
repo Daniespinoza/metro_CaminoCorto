@@ -39,7 +39,7 @@ FR|Franklin|6
 RO|Rondizzoni|
 PQ|Parque O'Higgins|
 TO|Toesca|
-LH|Los Héroes|1
+HE|Los Héroes|1
 AN|Santa Ana|5
 CA|Puente Cal y Canto|
 PT|Patronato|
@@ -50,7 +50,7 @@ DO|Dorsal|
 ZA|Zapadores|
 AV|Vespucio Norte|
 #Linea 4|23
-TB|Tobalaba|1
+TOB|Tobalaba|1
 COL|Cristóbal Colón|
 BIL|Francisco Bilbao|
 PDG|Principe de Gales|
@@ -74,12 +74,12 @@ LME|Las Mercedes|
 PIN|Protectora de la Infancia|
 PPA|Plaza de Puente Alto|
 #Linea 4a|6
-VMA|Vicuña Mackenna|4
+VIM|Vicuña Mackenna|4
 SJU|Santa Julia|
 LGR|La Granja|
 SRO|Santa Rosa|
 SRA|San Ramón|
-LC|La Cisterna|2
+LCI|La Cisterna|2
 #Linea 5|30
 PM|Plaza de Maipú|
 SB|Santiago Bueras|
@@ -89,16 +89,16 @@ LP|Las Parcelas|
 LS|Laguna Sur|
 BR|Barrancas|
 PU|Pudahuel|
-SP|San Pablo|1
+SO|San Pablo|1
 PR|Lo Prado|
 BL|Blanqueado|
 GL|Gruta de Lourdes|
 QN|Quinta Normal|
 RC|Cumming|
-AN|Santa Ana|2
+NA|Santa Ana|2
 PZ|Plaza de Armas|
 BE|Bellas Artes|
-BA|Baquedano|1
+BQ|Baquedano|1
 PB|Parque Bustamante|
 SI|Santa Isabel|
 IR|Irarrázaval|
@@ -110,15 +110,15 @@ SJ|San Joaquín|
 PE|Pedrero|
 MA|Mirador|
 LF|Bellavista de La Florida|
-VVA|Vicente Valdés|4
+VV|Vicente Valdés|4
 #Linea 6|10
 CER|Cerrillos|
 LVA|Lo Valledor|
 PAC|Pedro Aguirre Cerda|
-FR|Franklin|2
+FRA|Franklin|2
 BIO|Bío Bío|
-NU|Ñuble|5
+NUB|Ñuble|5
 ESN|Estadio Nacional|
 NUO|Ñuñoa|
 ISU|Inés de Suárez|
-LE|Los Leones|1
+LEN|Los Leones|1

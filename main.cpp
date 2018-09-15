@@ -39,15 +39,16 @@
      */
 
 #include "Funciones.h"
+#include </usr/include/mpi/mpi.h>
 
 //lista de adyacencia
-vector< Node > ady[ MAX ];
+vector< Node > ady[ max ];
 
 //distancia[ u ] distancia de vértice inicial a vértice con ID = u
-int distancia[ MAX ];
+int distancia[ max ];
 
 //para vértices visitados
-bool visitado[ MAX ];
+bool visitado[ max ];
 
 //priority queue propia del c++, usamos el comparador definido 
 //para que el de menor valor este en el tope
@@ -57,7 +58,7 @@ priority_queue< Node , vector<Node> , cmp > Q;
 int V = cantidad_estaciones;
 
 //para la impresion de caminos
-int previo[ MAX ];
+int previo[ max ];
 
 /**
  * Función de inicialización.
@@ -136,6 +137,9 @@ void dijkstra(int inicial, int destino, Estacion estaciones[], string ruta[], in
  * MAIN
  */
 int main(int argc, char** argv) {
+    MPI_Init(0,0);
+    cout << "hello" << endl;
+    MPI_Finalize();
 
     if (argc < 2){
 	      cout << endl;

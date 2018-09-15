@@ -21,7 +21,7 @@
 using namespace std;
 
 #define cantidad_estaciones 119
-#define MAX 10005 //maximo numero de vértices
+#define max 10005 //maximo numero de vértices
 #define Node pair< int , int > //definimos el nodo como un par( first , second ) donde first es el vertice adyacente y second el peso de la arista
 #define INF 1<<30 //definimos un valor grande que represente la distancia infinita inicial, basta conque sea superior al maximo valor del peso en alguna de las aristas
 

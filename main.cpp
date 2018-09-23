@@ -39,7 +39,6 @@
      */
 
 #include "Funciones.h"
-#include </usr/include/mpi/mpi.h>
 
 //lista de adyacencia
 vector< Node > ady[ max ];
@@ -71,7 +70,12 @@ void init(){
     }
 }
 
-//Paso de relajacion
+/**
+ * Paso de relajación.
+ * @param actual Vértice actual.
+ * @param adyacente Vértice adyacente.
+ * @param peso Peso de la arista.
+ */
 void relajacion( int actual , int adyacente , int peso ){
     //Si la distancia del origen al vertice actual + peso de su arista es menor a la distancia del origen al vertice adyacente
     if( distancia[ actual ] + peso < distancia[ adyacente ] ){
@@ -81,7 +85,14 @@ void relajacion( int actual , int adyacente , int peso ){
     }
 }
 
-//Impresion del camino mas corto desde el vertice inicial y final ingresados
+/**
+ * Impresion del camino mas corto desde el vertice inicial y final ingresados
+ * @param destino Vértice de destino.
+ * @param estaciones Arreglo de struct con las estaciones.
+ * @param ruta Arreglo de strings para guardar la ruta.
+ * @param index Igual a cero.
+ * @return Cantidad de estaciones en la ruta.
+ */
 int print(int destino, Estacion estaciones[], string ruta[], int index){
     
     ruta[index] = estaciones[destino].nombre;
@@ -92,6 +103,14 @@ int print(int destino, Estacion estaciones[], string ruta[], int index){
     //printf("%d " , destino );//terminada la recursion imprimo los vertices recorridos
 }
 
+/**
+ * Algoritmo de Dijkstra.
+ * @param inicial Vértice inicial.
+ * @param destino Vértice de destino.
+ * @param estaciones Arreglo de struct con las estaciones.
+ * @param ruta Arreglo de strings para guardar la ruta.
+ * @param index Igual a cero.
+ */
 void dijkstra(int inicial, int destino, Estacion estaciones[], string ruta[], int index){
     init(); //inicializamos nuestros arreglos
     Q.push( Node( inicial , 0 ) ); //Insertamos el vértice inicial en la Cola de Prioridad
@@ -137,9 +156,6 @@ void dijkstra(int inicial, int destino, Estacion estaciones[], string ruta[], in
  * MAIN
  */
 int main(int argc, char** argv) {
-    MPI_Init(0,0);
-    cout << "hello" << endl;
-    MPI_Finalize();
 
     if (argc < 2){
 	      cout << endl;
@@ -158,7 +174,7 @@ int main(int argc, char** argv) {
     
     else{
     
-        if(parametro == "-f"){
+        if(parametro == "-f" and argc == 4){
 
             // Se declara el arreglo que contendrá las estaciones
             Estacion estaciones[cantidad_estaciones];
